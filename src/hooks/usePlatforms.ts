@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import axiosClient, { FetchResponse } from "../services/api-client";
-import APIClient from "../services/api-client";
+import ms from "ms";
+import APIClient, { FetchResponse } from "../services/api-client";
 
 export interface Platform {
   id: number;
@@ -14,6 +14,6 @@ const usePlatforms = () =>
   useQuery<FetchResponse<Platform>, Error>({
     queryKey: ["platforms"],
     queryFn: apiClient.getAll,
-    staleTime: 1000 * 60 * 60 * 24, // 24 hours
+    staleTime: ms("24h"),
   });
 export default usePlatforms;

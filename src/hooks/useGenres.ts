@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import axiosClient, { FetchResponse } from "../services/api-client";
-import APIClient from "../services/api-client";
+import APIClient, { FetchResponse } from "../services/api-client";
+import ms from "ms";
 
 export interface Genre {
   id: number;
@@ -16,7 +16,7 @@ const useGenres = () =>
   useQuery<FetchResponse<Genre>, Error>({
     queryKey: ["genres"],
     queryFn: apiClient.getAll,
-    staleTime: 1000 * 60 * 60 * 24, // 24 hours
+    staleTime: ms("24h"),
   });
 
 export default useGenres;
