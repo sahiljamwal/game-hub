@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 export interface FetchResponse<T> {
   count: number;
@@ -12,4 +12,13 @@ const apiClient = axios.create({
   params: { key: import.meta.env.VITE_RAWG_API_KEY },
 });
 
-export default apiClient;
+class APIClient<T> {
+  constructor(private _endpoint: string) {}
+
+  public getAll = (config: AxiosRequestConfig) =>
+    apiClient
+      .get<FetchResponse<T>>(this._endpoint, config)
+      .then((res) => res.data);
+}
+
+export default APIClient;
