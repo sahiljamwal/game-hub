@@ -1,14 +1,12 @@
 import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { useState } from "react";
 import "./App.css";
-import NavBar from "./components/NavBar";
+import DynamicHeading from "./components/DynamicHeading";
 import GamesGrid from "./components/GamesGrid";
 import GenreList from "./components/GenreList";
-import { useState } from "react";
-import { Genre } from "./hooks/useGenres";
+import NavBar from "./components/NavBar";
 import PlatformList from "./components/PlatformList";
 import SortSelector from "./components/SortSelector";
-import DynamicHeading from "./components/DynamicHeading";
-import { Platform } from "./hooks/usePlatforms";
 
 export interface GameQuery {
   genreId?: number;
